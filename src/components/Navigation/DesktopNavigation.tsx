@@ -1,22 +1,33 @@
-import { ModeToggle } from "@/components/dark-mode/mode-toggle";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 function DesktopNavigation() {
   return (
-    <ul className="flex items-center w-full">
-      <li className="mr-5">
-        <a href="#">Discover</a>
-      </li>
-      <li className="mr-5">
-        <a href="#">Browse</a>
-      </li>
-      <li className="mr-5">
-        <a href="#">News</a>
-      </li>
-      <li className="ml-auto">
-        <ModeToggle />
-      </li>
-    </ul>
-  )
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            Discover
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            Browse
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            News
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
 }
 
-export default DesktopNavigation
+export default DesktopNavigation;

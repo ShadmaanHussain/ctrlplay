@@ -1,15 +1,19 @@
 import {
-    Sheet,
-    SheetClose,
-    SheetContent,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
-  } from "@/components/ui/sheet";
-  import { Button } from "@/components/ui/button";
-  import { Menu } from "lucide-react";
-  import { ModeToggle } from "@/components/dark-mode/mode-toggle";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 function MobileNavigation() {
   return (
@@ -21,27 +25,27 @@ function MobileNavigation() {
       </SheetTrigger>
       <SheetContent side={"left"}>
         <SheetHeader>
-          <SheetTitle>Menu</SheetTitle>
+          <SheetTitle className="text-2xl">Menu</SheetTitle>
         </SheetHeader>
-        <ul className="flex flex-col items-center w-full">
-          <li className="mr-5">
-            <a href="#">Discover</a>
-          </li>
-          <li className="mr-5">
-            <a href="#">Browse</a>
-          </li>
-          <li className="mr-5">
-            <a href="#">News</a>
-          </li>
-          <li className="ml-auto">
-            <ModeToggle />
-          </li>
-        </ul>
-        <SheetFooter>
-          <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
-          </SheetClose>
-        </SheetFooter>
+        <NavigationMenu className="mx-auto mt-8">
+          <NavigationMenuList className="flex-col gap-6">
+            <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Discover
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                Browse
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                News
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
       </SheetContent>
     </Sheet>
   );
