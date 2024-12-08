@@ -10,7 +10,6 @@ import { DISCOVER_PATH, BROWSE_PATH, NEWS_PATH } from "@/utils/pathConstants";
 
 function CommonNavigation() {
   const location = useLocation();
-  console.log(location);
 
   const isActive = (path : string) => location.pathname === path;
 
