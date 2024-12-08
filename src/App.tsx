@@ -42,6 +42,14 @@ function App() {
               </h1>
             }
           />
+          <Route
+            path="*"
+            element={
+              <h1 className="scroll-m-20 text-4xl font-extrabold text-center tracking-tight lg:text-5xl">
+                I think you're in the wrong place pal. Check the URL
+              </h1>
+            }
+          />
         </Routes>
       </ThemeProvider>
     </>
