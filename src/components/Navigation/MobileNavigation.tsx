@@ -7,13 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import CommonNavigation from "./CommonNavigation";
 
 function MobileNavigation() {
   return (
@@ -27,25 +21,7 @@ function MobileNavigation() {
         <SheetHeader>
           <SheetTitle className="text-2xl">Menu</SheetTitle>
         </SheetHeader>
-        <NavigationMenu className="mx-auto mt-8">
-          <NavigationMenuList className="flex-col gap-6">
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Discover
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Browse
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                News
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+        <CommonNavigation />
       </SheetContent>
     </Sheet>
   );
