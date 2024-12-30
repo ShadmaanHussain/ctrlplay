@@ -11,7 +11,7 @@ import { DISCOVER_PATH, BROWSE_PATH, NEWS_PATH } from "@/utils/pathConstants";
 function CommonNavigation() {
   const location = useLocation();
 
-  const isActive = (path : string) => {console.log(location.pathname === path); return location.pathname === path};
+  const isActive = (path : string) => location.pathname === path;
 
   return (
     <NavigationMenu className="mx-auto mt-8 sm:mx-0 sm:mt-0">
