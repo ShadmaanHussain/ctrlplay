@@ -6,6 +6,7 @@ import CommonNavigation from "./CommonNavigation";
 
 function Navbar() {
   const isMobileView = useMediaQuery(640);
+  console.log("hello");
 
   return (
     <div className="py-4 px-8 border-b-gray-100 bg-background">
