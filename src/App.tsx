@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import Navbar from "./components/navigation/Navbar";
 import { Route, Routes } from "react-router";
-import { DISCOVER_PATH, BROWSE_PATH, NEWS_PATH } from "./utils/pathConstants";
+import { BROWSE_PATH, NEWS_PATH } from "./utils/pathConstants";
 
 function App() {
   return (
@@ -14,14 +14,6 @@ function App() {
             element={
               <h1 className="scroll-m-20 text-4xl font-extrabold text-center tracking-tight lg:text-5xl">
                 Game Store coming soon...
-              </h1>
-            }
-          />
-          <Route
-            path={DISCOVER_PATH}
-            element={
-              <h1 className="scroll-m-20 text-4xl font-extrabold text-center tracking-tight lg:text-5xl">
-                Discover games that are to your liking here...
               </h1>
             }
           />
