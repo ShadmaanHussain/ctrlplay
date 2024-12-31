@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
-import Navbar from "./components/nav/Navbar";
+import Navbar from "./components/navigation/Navbar";
 import { Route, Routes } from "react-router";
 import { DISCOVER_PATH, BROWSE_PATH, NEWS_PATH } from "./utils/pathConstants";
 
