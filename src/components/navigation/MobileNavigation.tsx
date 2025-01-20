@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
-import CommonNavigation from "./CommonNavigation";
+import DesktopNavigation from "./DesktopNavigation";
 
 function MobileNavigation() {
   return (
@@ -17,11 +17,11 @@ function MobileNavigation() {
           <Menu />
         </Button>
       </SheetTrigger>
-      <SheetContent side={"left"}>
+      <SheetContent className="flex flex-col sm:flex-row" side={"left"}>
         <SheetHeader>
           <SheetTitle className="text-2xl">Menu</SheetTitle>
         </SheetHeader>
-        <CommonNavigation />
+        <DesktopNavigation />
       </SheetContent>
     </Sheet>
   );
