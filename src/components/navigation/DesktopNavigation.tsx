@@ -6,13 +6,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link, useLocation } from "react-router";
-import { HOME_PATH, BROWSE_PATH, NEWS_PATH } from "@/utils/pathConstants";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut
-} from "firebase/auth";
-import { auth } from "@/firebase/firebase-config";
+import { HOME_PATH, BROWSE_PATH, NEWS_PATH } from "@/constants/pathConstants";
+import { SignUpWithGoogle, SignOut } from "@/lib/firebaseAuthUtils";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../dark-mode/mode-toggle";
 import { AuthContext } from "@/context/AuthProvider";
@@ -29,24 +24,6 @@ const DesktopNavigation = () => {
   console.log(loading);
 
   const isActive = (path: string) => location.pathname === path;
-
-  const SignUpWithGoogle = async () => {
-    try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
-
-  const SignOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error("Error during sign out: ", error);
-    }
-  };
 
   return (
     <div className="w-100 flex flex-col sm:flex-row justify-between flex-grow gap-6 sm:gap-0">

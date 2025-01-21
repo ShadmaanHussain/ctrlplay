@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import Navbar from "./components/navigation/Navbar";
 import { Route, Routes } from "react-router";
-import { BROWSE_PATH, NEWS_PATH } from "./utils/pathConstants";
+import { BROWSE_PATH, NEWS_PATH } from "./constants/pathConstants";
 import { AuthProvider } from "./context/AuthProvider";
 
 function App() {
