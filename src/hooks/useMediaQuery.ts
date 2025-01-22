@@ -1,7 +1,7 @@
 import { throttle } from "lodash";
 import { useEffect, useState } from "react";
 
-function useMediaQuery(threshold: number) {
+function useMediaQuery(threshold: number = 640) {
   const [isMobileView, setIsMobileView] = useState<boolean>(
     window.innerWidth < threshold
   );

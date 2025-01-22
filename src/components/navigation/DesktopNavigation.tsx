@@ -7,11 +7,12 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Link, useLocation } from "react-router";
 import { HOME_PATH, BROWSE_PATH, NEWS_PATH } from "@/constants/pathConstants";
-import { SignUpWithGoogle, SignOut } from "@/lib/firebaseAuthUtils";
+import { SignUpWithGoogle } from "@/lib/firebaseAuthUtils";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../dark-mode/mode-toggle";
 import { AuthContext } from "@/context/AuthProvider";
 import { useContext } from "react";
+import UserDropdown from "./UserDropdown";
 
 const DesktopNavigation = () => {
   const location = useLocation();
@@ -66,9 +67,11 @@ const DesktopNavigation = () => {
       </NavigationMenu>
       <div className="flex items-center flex-grow sm:mt-0 flex-col-reverse sm:flex-row sm:justify-end gap-6">
         {user ? (
-          <Button className="w-full sm:w-auto" onClick={SignOut}>Sign Out</Button>
+          <UserDropdown user={user} />
         ) : (
-          <Button className="w-full sm:w-auto" onClick={SignUpWithGoogle}>Sign In</Button>
+          <Button className="w-full sm:w-auto" onClick={SignUpWithGoogle}>
+            Sign In
+          </Button>
         )}
         <ModeToggle />
       </div>

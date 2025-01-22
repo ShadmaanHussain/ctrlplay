@@ -4,7 +4,7 @@ import MobileNavigation from "./MobileNavigation";
 import DesktopNavigation from "./DesktopNavigation";
 
 function Navbar() {
-  const isMobileView = useMediaQuery(640);
+  const isMobileView = useMediaQuery();
 
   return (
     <div className="py-4 px-8 border-b-gray-100 bg-background w-full">
@@ -21,7 +21,7 @@ function Navbar() {
             CTRL<span className="text-red-600">PLAY</span>
           </Link>
         </div>
-        {!isMobileView && <DesktopNavigation />}
+        {!isMobileView && <DesktopNavigation isMobileView={false} />}
       </div>
     </div>
   );
