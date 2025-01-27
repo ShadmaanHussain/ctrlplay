@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button";
 import { User } from "firebase/auth";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { SignOut } from "@/lib/firebaseAuthUtils";
+import { LogOut } from 'lucide-react';
+import { UserRound } from 'lucide-react';
 
 interface UserDropdownProps {
   user: User;
@@ -25,14 +27,15 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ user }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="w-full sm:w-auto flex justify-center items-center">
-        {/* <Button className="w-full sm:w-auto" variant="outline">Hi, {user.displayName ?? ""}</Button> */}
-        <Button className="w-full sm:w-auto py-6 sm:p-0 sm:m-0 sm:rounded-full">
+        <Button className="w-full sm:w-auto py-6 sm:p-0 sm:m-0 sm:rounded-full sm:bg-secondary sm:hover:bg-secondary">
           <Avatar className="w-6 h-6 sm:w-10 sm:h-10">
             <AvatarImage
               src={user.photoURL ? cleanUrl(user.photoURL) : undefined}
               title={user.displayName ?? undefined}
             />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarFallback className="bg-primary">
+              <UserRound />
+            </AvatarFallback>
           </Avatar>
           {isMobileView && (
             <h1
@@ -51,7 +54,7 @@ const UserDropdown: React.FC<UserDropdownProps> = ({ user }) => {
           className="bg-foreground text-secondary flex items-center justify-center font-bold"
           onClick={SignOut}
         >
-          Sign Out
+          <LogOut /> Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

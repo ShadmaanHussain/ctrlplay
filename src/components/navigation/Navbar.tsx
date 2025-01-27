@@ -21,7 +21,7 @@ function Navbar() {
             CTRL<span className="text-red-600">PLAY</span>
           </Link>
         </div>
-        {!isMobileView && <DesktopNavigation isMobileView={false} />}
+        {!isMobileView && <DesktopNavigation />}
       </div>
     </div>
   );
