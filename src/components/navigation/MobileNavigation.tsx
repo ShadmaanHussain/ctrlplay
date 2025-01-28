@@ -21,7 +21,7 @@ function MobileNavigation() {
         <SheetHeader>
           <SheetTitle className="text-2xl">Menu</SheetTitle>
         </SheetHeader>
-        <DesktopNavigation isMobileView={true} />
+        <DesktopNavigation />
       </SheetContent>
     </Sheet>
   );
