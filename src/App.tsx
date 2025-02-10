@@ -3,8 +3,19 @@ import Navbar from "./components/navigation/Navbar";
 import { Route, Routes } from "react-router";
 import { BROWSE_PATH, NEWS_PATH } from "./constants/pathConstants";
 import { AuthProvider } from "./context/AuthProvider";
+import BrowsePage from "./pages/BrowsePage";
 
 function App() {
+  // useEffect(() => {
+  //   async function callGetToken() {
+  //     await getToken();
+  //     await getGames();
+  //   }
+
+
+  //   callGetToken();
+  // }, []);
+
   return (
     <>
       <AuthProvider>
@@ -21,11 +32,7 @@ function App() {
             />
             <Route
               path={BROWSE_PATH}
-              element={
-                <h1 className="scroll-m-20 text-4xl font-extrabold text-center tracking-tight lg:text-5xl">
-                  Browse from a variety of games...
-                </h1>
-              }
+              element={<BrowsePage/>}
             />
             <Route
               path={NEWS_PATH}
