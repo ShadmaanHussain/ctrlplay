@@ -20,9 +20,7 @@ const DesktopNavigation = () => {
   if (!authContext) {
     throw new Error("AuthContext must be used within an AuthProvider");
   }
-  const { user, loading } = authContext;
-  console.log(user);
-  console.log(loading);
+  const { user } = authContext;
 
   const isActive = (path: string) => location.pathname === path;
 
