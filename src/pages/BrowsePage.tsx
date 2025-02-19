@@ -1,5 +1,6 @@
 import { data } from "./data";
-import GameCard, { Game } from "@/components/GameCard";
+import GameCard from "@/components/GameCard";
+import { Game } from "@/types/GameTypes"
 
 const BrowsePage = () => {
   console.log(data);
@@ -7,7 +8,7 @@ const BrowsePage = () => {
     return { name: game.name, imageURL: game.background_image };
   });
   return (
-    <div className="max-w-7xl mx-auto mt-6 w-[80%] grid grid-cols-1 sm:grid-cols-4 sm:gap-4">
+    <div className="max-w-7xl mx-auto mt-6 w-[80%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
       {dataFinal.map((game: Game) => (
         <GameCard game={game} />
       ))}
