@@ -1,60 +1,22 @@
-import { data } from "./data";
-import GameCard from "@/components/GameCard";
-import { Game } from "@/types/GameTypes";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
+import CardList from "@/components/browse/CardList";
+import { useQuery } from '@tanstack/react-query';
+
+const fetchGames = async () => {
+  const response = await fetch('https://api.rawg.io/api/games?key=3c1a67e228c84ce880cc6c35b8464dab'); // Replace with your API endpoint
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+};
 
 const BrowsePage = () => {
+  const { data, error, isLoading } = useQuery({queryKey: ['games'], queryFn: fetchGames});
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
   console.log(data);
-  const dataFinal: Game[] = data.results.map((game) => {
-    return {
-      id: game.id,
-      name: game.name,
-      background_image: game.background_image,
-      genres: game.genres,
-      released: game.released,
-      metacritic: game.metacritic,
-    };
-  });
-
   return (
     <div className="max-w-7xl w-[90%] mx-auto">
-      <div className="mt-6 mb-8 px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {dataFinal.map((game: Game) => (
-          <GameCard game={game} key={game.id} />
-        ))}
-      </div>
-      <Pagination className="mb-14">
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#" isActive>
-              2
-            </PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+      <CardList data={data.results} />
     </div>
   );
 };
