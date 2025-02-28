@@ -4,6 +4,7 @@ import { AuthProvider } from "./context/AuthProvider";
 import AppRoutes from "@/AppRoutes";
 import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import MediaQueryProvider from "./context/MediaQueryProvider";
 
 const queryClient = new QueryClient();
 
@@ -14,8 +15,10 @@ function App() {
         <AuthProvider>
           <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
             <QueryClientProvider client={queryClient}>
-              <Navbar />
-              <AppRoutes />
+              <MediaQueryProvider threshold={640}>
+                <Navbar />
+                <AppRoutes />
+              </MediaQueryProvider>
             </QueryClientProvider>
           </ThemeProvider>
         </AuthProvider>

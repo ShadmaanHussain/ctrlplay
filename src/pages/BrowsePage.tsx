@@ -1,4 +1,5 @@
 import CardList from "@/components/browse/CardList";
+import CardListSkeleton from "@/components/browse/CardListSkeleton";
 import { useQuery } from '@tanstack/react-query';
 
 const fetchGames = async () => {
@@ -11,12 +12,12 @@ const fetchGames = async () => {
 
 const BrowsePage = () => {
   const { data, error, isLoading } = useQuery({queryKey: ['games'], queryFn: fetchGames});
-  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+  
   console.log(data);
   return (
     <div className="max-w-7xl w-[90%] mx-auto">
-      <CardList data={data.results} />
+      {isLoading ? <CardListSkeleton /> : <CardList data={data.results} />}
     </div>
   );
 };

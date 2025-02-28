@@ -1,18 +1,8 @@
-import { throttle } from "lodash";
-import { useEffect, useState } from "react";
+import { MediaQueryContext } from "@/context/MediaQueryProvider";
+import { useContext } from "react";
 
-function useMediaQuery(threshold: number = 640) {
-  const [isMobileView, setIsMobileView] = useState<boolean>(
-    window.innerWidth < threshold
-  );
-
-  useEffect(() => {
-    const handleResize = throttle(() => {
-      setIsMobileView(window.innerWidth < threshold);
-    }, 200);
-    window.addEventListener("resize", handleResize);
-  }, [threshold]);
-
+function useMediaQuery() {
+  const isMobileView = useContext(MediaQueryContext);
   return isMobileView;
 }
 

@@ -12,8 +12,8 @@ import { Button } from "@/components/ui/button";
 import { User } from "firebase/auth";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { SignOut } from "@/lib/firebaseAuthUtils";
-import { LogOut } from 'lucide-react';
-import { UserRound } from 'lucide-react';
+import { LogOut } from "lucide-react";
+import { UserRound } from "lucide-react";
 
 interface UserDropdownProps {
   user: User;
@@ -22,7 +22,7 @@ interface UserDropdownProps {
 const cleanUrl = (url: string) => url.split("=")[0];
 
 const UserDropdown: React.FC<UserDropdownProps> = ({ user }) => {
-    const isMobileView = useMediaQuery();
+  const isMobileView = useMediaQuery();
 
   return (
     <DropdownMenu>
