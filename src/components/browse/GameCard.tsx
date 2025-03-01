@@ -52,13 +52,15 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
             {getGnenreString(game.genres)}
           </p>
         </div>
-        <div
-          className={`text-sm w-5 h-5 ${calculateRatingColor(
-            game.metacritic
-          )} text-black font-bold ml-2 p-3 rounded-sm flex justify-center items-center`}
-        >
-          <p className="leading-none">{game.metacritic}</p>
-        </div>
+        {game.metacritic && (
+          <div
+            className={`text-sm w-5 h-5 ${calculateRatingColor(
+              game.metacritic
+            )} text-black font-bold ml-2 p-3 rounded-sm flex justify-center items-center`}
+          >
+            <p className="leading-none">{game.metacritic}</p>
+          </div>
+        )}
       </CardContent>
     </Card>
   );

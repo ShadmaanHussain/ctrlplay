@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { BROWSE_PATH, NEWS_PATH } from "@/constants/pathConstants";
+import { BROWSE_PATH, NEWS_PATH } from "@/constants/PathConstants";
 import BrowsePage from "@/pages/BrowsePage";
 
 const AppRoutes = () => {

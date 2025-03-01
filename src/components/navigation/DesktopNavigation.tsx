@@ -6,8 +6,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Link, useLocation } from "react-router";
-import { HOME_PATH, BROWSE_PATH, NEWS_PATH } from "@/constants/pathConstants";
-import { SignUpWithGoogle } from "@/lib/firebaseAuthUtils";
+import { HOME_PATH, BROWSE_PATH, NEWS_PATH } from "@/constants/PathConstants";
+import { SignUpWithGoogle } from "@/lib/FirebaseAuthUtils";
 import { Button } from "../ui/button";
 import { ModeToggle } from "../dark-mode/mode-toggle";
 import { AuthContext } from "@/context/AuthProvider";

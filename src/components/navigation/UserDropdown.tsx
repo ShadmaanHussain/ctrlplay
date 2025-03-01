@@ -11,7 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { User } from "firebase/auth";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { SignOut } from "@/lib/firebaseAuthUtils";
+import { SignOut } from "@/lib/FirebaseAuthUtils";
 import { LogOut } from "lucide-react";
 import { UserRound } from "lucide-react";
 
