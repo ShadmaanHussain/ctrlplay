@@ -18,7 +18,7 @@ const calculateRatingColor = (rating: number) => {
   }
 };
 
-const getGnenreString = (genres: GameGenre[]) => {
+const getGenreString = (genres: GameGenre[]) => {
   return genres.map(
     (genre) =>
       `${genre.name}${genres.indexOf(genre) !== genres.length - 1 ? ", " : ""}`
@@ -49,7 +49,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       <CardContent className="flex justify-between items-center px-4 pb-4 pt-1 w-full">
         <div className="flex-1 overflow-hidden">
           <p className="text-sm text-gray-500 whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
-            {getGnenreString(game.genres)}
+            {getGenreString(game.genres)}
           </p>
         </div>
         {game.metacritic && (
