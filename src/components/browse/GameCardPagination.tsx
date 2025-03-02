@@ -98,7 +98,6 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
             ) : (
               <Link to={`/browse?page=${activePage + 1}`}>
                 <PaginationNext
-                  href="#"
                   aria-disabled={activePage >= totalPages}
                   tabIndex={activePage >= totalPages ? -1 : undefined}
                   className={
