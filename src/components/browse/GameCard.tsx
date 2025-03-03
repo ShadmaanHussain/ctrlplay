@@ -40,6 +40,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
         src={game.background_image}
         alt=""
         className="rounded-t-xl w-full h-48 object-cover"
+        loading="lazy"
       />
       <CardHeader className="relative z-10 px-4 py-1 mb-0">
         <CardTitle className="text-lg font-bold m-0 whitespace-nowrap overflow-hidden text-ellipsis">
