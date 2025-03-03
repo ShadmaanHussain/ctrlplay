@@ -5,9 +5,8 @@ import { fetchGames } from "@/lib/RawgUtils";
 import { useSearchParams } from "react-router";
 import GameCardPagination from "@/components/browse/GameCardPagination";
 import { useEffect } from "react";
-import { AlertCircle } from "lucide-react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import PageContainer from "@/components/PageContainer";
+import ErrorAlert from "@/components/ErrorAlert";
 
 const BrowsePage = () => {
   const [searchParams] = useSearchParams();
@@ -24,21 +23,20 @@ const BrowsePage = () => {
   });
 
   if (error) {
-    console.log(error);
-    return <div>Error: {error.message}</div>;
+    return (
+      <PageContainer>
+        <ErrorAlert message={`An error occured: ${error.message}.`} />
+      </PageContainer>
+    );
   }
 
   if (!isLoading && !data) {
     return (
       <PageContainer>
-        <Alert variant="destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>
-            No data fetched! Please check your internet connection and try
-            again.
-          </AlertDescription>
-        </Alert>
+        <ErrorAlert
+          message="No data fetched! Please check your internet connection and try
+            again."
+        />
       </PageContainer>
     );
   }
