@@ -5,10 +5,12 @@ import AppRoutes from "@/AppRoutes";
 import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import MediaQueryProvider from "./context/MediaQueryProvider";
+import { validateEnvironmentVariables } from "./lib/utils";
 
 const queryClient = new QueryClient();
 
 function App() {
+  validateEnvironmentVariables();
   return (
     <>
       <BrowserRouter>
