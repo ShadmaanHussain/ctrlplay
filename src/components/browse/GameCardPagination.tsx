@@ -36,14 +36,7 @@ const getPageNumbers = (activePage: number, totalPages: number) => {
     ];
   }
 
-  return [
-    1,
-    "...",
-    activePage - 1,
-    activePage,
-    activePage + 1,
-    "...",
-  ];
+  return [1, "...", activePage - 1, activePage, activePage + 1, "..."];
 };
 
 const GameCardPagination: React.FC<GameCardPaginationProps> = ({
@@ -53,7 +46,7 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
   return (
     <div>
       <Pagination className="mb-14">
-        <PaginationContent>
+        <PaginationContent className="flex flex-wrap justify-center">
           <PaginationItem>
             {activePage <= 1 ? (
               <PaginationPrevious
@@ -63,15 +56,7 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
               />
             ) : (
               <Link to={`/browse?page=${activePage - 1}`}>
-                <PaginationPrevious
-                  aria-disabled={activePage <= 1}
-                  tabIndex={activePage <= 1 ? -1 : undefined}
-                  className={
-                    activePage <= 1
-                      ? "pointer-events-none opacity-50"
-                      : undefined
-                  }
-                />
+                <PaginationPrevious />
               </Link>
             )}
           </PaginationItem>
@@ -97,15 +82,7 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
               />
             ) : (
               <Link to={`/browse?page=${activePage + 1}`}>
-                <PaginationNext
-                  aria-disabled={activePage >= totalPages}
-                  tabIndex={activePage >= totalPages ? -1 : undefined}
-                  className={
-                    activePage >= totalPages
-                      ? "pointer-events-none opacity-50"
-                      : undefined
-                  }
-                />
+                <PaginationNext />
               </Link>
             )}
           </PaginationItem>
