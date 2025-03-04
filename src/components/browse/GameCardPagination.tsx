@@ -53,10 +53,11 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
                 aria-disabled={true}
                 tabIndex={-1}
                 className="pointer-events-none opacity-50"
+                aria-label="Previous"
               />
             ) : (
               <Link to={`/browse?page=${activePage - 1}`}>
-                <PaginationPrevious />
+                <PaginationPrevious aria-label="Previous" />
               </Link>
             )}
           </PaginationItem>
@@ -79,10 +80,11 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
                 aria-disabled={true}
                 tabIndex={-1}
                 className="pointer-events-none opacity-50"
+                aria-label="Next"
               />
             ) : (
               <Link to={`/browse?page=${activePage + 1}`}>
-                <PaginationNext />
+                <PaginationNext aria-label="Next" />
               </Link>
             )}
           </PaginationItem>

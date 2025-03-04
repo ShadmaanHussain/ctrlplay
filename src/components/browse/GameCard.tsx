@@ -29,6 +29,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
   return (
     <Card className="relative bg-muted group">
       <Button
+        aria-label="Add to library"
         title="Add to library"
         variant="outline"
         size="icon"
@@ -38,7 +39,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       </Button>
       <img
         src={game.background_image}
-        alt=""
+        alt="game cover"
         className="rounded-t-xl w-full h-48 object-cover"
         loading="lazy"
       />
