@@ -41,6 +41,7 @@ const BrowsePage = () => {
     );
   }
 
+  console.log(data);
   const totalPages = isLoading ? 0 : data.count;
 
   return (

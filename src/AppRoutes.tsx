@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router";
 import BrowsePage from "@/pages/BrowsePage";
 import { BROWSE_PATH, NEWS_PATH } from "./constants/PathConstants";
+import GameDetailsPage from "./pages/GameDetailsPage";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
         }
       />
       <Route path={BROWSE_PATH} element={<BrowsePage />} />
+      <Route path={`${BROWSE_PATH}/:slug`} element={<GameDetailsPage />}/>
       <Route
         path={NEWS_PATH}
         element={

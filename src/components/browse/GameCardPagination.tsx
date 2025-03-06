@@ -9,6 +9,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { Link } from "react-router";
+import { BROWSE_PATH } from "@/constants/PathConstants";
 
 interface GameCardPaginationProps {
   activePage: number;
@@ -56,7 +57,7 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
                 aria-label="Previous"
               />
             ) : (
-              <Link to={`/browse?page=${activePage - 1}`}>
+              <Link to={`${BROWSE_PATH}?page=${activePage - 1}`}>
                 <PaginationPrevious aria-label="Previous" />
               </Link>
             )}
@@ -66,7 +67,7 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
               {page === "..." ? (
                 <PaginationEllipsis />
               ) : (
-                <Link to={`/browse?page=${page}`}>
+                <Link to={`${BROWSE_PATH}?page=${page}`}>
                   <PaginationLink isActive={page === activePage}>
                     {page}
                   </PaginationLink>
@@ -83,7 +84,7 @@ const GameCardPagination: React.FC<GameCardPaginationProps> = ({
                 aria-label="Next"
               />
             ) : (
-              <Link to={`/browse?page=${activePage + 1}`}>
+              <Link to={`${BROWSE_PATH}?page=${activePage + 1}`}>
                 <PaginationNext aria-label="Next" />
               </Link>
             )}

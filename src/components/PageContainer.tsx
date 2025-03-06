@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 
 interface PageContainerProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 
