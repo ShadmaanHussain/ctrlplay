@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Game, GameGenre } from "@/types/GameTypes";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { Link } from "react-router";
 
 interface GameCardProps {
   game: Game;
@@ -37,16 +38,20 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       >
         <Plus />
       </Button>
-      <img
-        src={game.background_image}
-        alt="game cover"
-        className="rounded-t-xl w-full h-48 object-cover"
-        loading="lazy"
-      />
+      <Link to={`/browse/${game.slug ? game.slug : game.id}`}>
+        <img
+          src={game.background_image}
+          alt="game cover"
+          className="rounded-t-xl w-full h-48 object-cover"
+          loading="lazy"
+        />
+      </Link>
       <CardHeader className="relative z-10 px-4 py-1 mb-0">
+      <Link to={`/browse/${game.slug ? game.slug : game.id}`}>
         <CardTitle className="text-lg font-bold m-0 whitespace-nowrap overflow-hidden text-ellipsis">
           {game.name}
         </CardTitle>
+      </Link>
       </CardHeader>
       <CardContent className="flex justify-between items-center px-4 pb-4 pt-1 w-full">
         <div className="flex-1 overflow-hidden">

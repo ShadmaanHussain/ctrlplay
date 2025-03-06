@@ -24,7 +24,7 @@ const BrowsePage = () => {
 
   if (error) {
     return (
-      <PageContainer>
+      <PageContainer className="flex justify-center items-center h-96">
         <ErrorAlert message={`An error occured: ${error.message}.`} />
       </PageContainer>
     );
@@ -41,7 +41,6 @@ const BrowsePage = () => {
     );
   }
 
-  console.log(data);
   const totalPages = isLoading ? 0 : data.count;
 
   return (
