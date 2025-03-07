@@ -13,7 +13,7 @@ const GameDetailsPage = () => {
     // if(!error && !isLoading) console.log(JSON.stringify(data));
     
   return (
-    <PageContainer>
+    <PageContainer className='mt-6'>
         <GameDetails />
     </PageContainer>
   )
