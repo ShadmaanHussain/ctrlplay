@@ -4,6 +4,14 @@ import parse from "html-react-parser";
 import { FaWindows } from "react-icons/fa";
 import { FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const GameDetails = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -25,9 +33,9 @@ const GameDetails = () => {
     <div className="flex gap-7">
       <div className="w-[40%]">
         <div className="flex gap-2 py-4">
-          {isOnPC && <FaWindows className="text-red-400" />}
-          {isOnPlaystation && <FaPlaystation className="text-red-400" />}
-          {isOnXbox && <FaXbox className="text-red-400" />}
+          {isOnPC && <FaWindows className="text-xl" />}
+          {isOnPlaystation && <FaPlaystation className="text-xl" />}
+          {isOnXbox && <FaXbox className="text-xl" />}
         </div>
         <h1 className="font-black text-6xl mb-4">{data.name}</h1>
         <div>
@@ -44,13 +52,32 @@ const GameDetails = () => {
         </div>
       </div>
       <div className="w-[60%]">
-        <video controls autoPlay muted className="h-full w-full rounded-xl">
+        <video controls autoPlay muted className="w-full rounded-xl">
           <source
             src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
             type="video/mp4"
           />
           Your browser does not support the video tag.
         </video>
+        <Carousel className="w-full max-w-xs">
+          <CarouselContent>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <CarouselItem key={index}>
+                <div className="p-1">
+                  <Card>
+                    <CardContent className="flex aspect-square items-center justify-center">
+                      <span className="text-4xl font-semibold">
+                        {index + 1}
+                      </span>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </div>
   );
