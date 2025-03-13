@@ -4,20 +4,11 @@ import { Game, GameGenre } from "@/types/GameTypes";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Link } from "react-router";
+import MetacriticScore from "../MetacriticScore";
 
 interface GameCardProps {
   game: Game;
 }
-
-const calculateRatingColor = (rating: number) => {
-  if (rating >= 75) {
-    return "bg-green-400";
-  } else if (rating < 75 && rating >= 50) {
-    return "bg-yellow-400";
-  } else {
-    return "bg-red-400";
-  }
-};
 
 const getGenreString = (genres: GameGenre[]) => {
   return genres.map(
@@ -60,13 +51,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
           </p>
         </div>
         {game.metacritic && (
-          <div
-            className={`text-sm w-5 h-5 ${calculateRatingColor(
-              game.metacritic
-            )} text-black font-bold ml-2 p-3 rounded-sm flex justify-center items-center`}
-          >
-            <p className="leading-none">{game.metacritic}</p>
-          </div>
+          <MetacriticScore score={game.metacritic} />
         )}
       </CardContent>
     </Card>

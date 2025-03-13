@@ -1,10 +1,5 @@
 import React, { useState } from "react";
 import data from "./data.json";
-import parse from "html-react-parser";
-import { FaWindows } from "react-icons/fa";
-import { FaPlaystation } from "react-icons/fa";
-import { FaXbox } from "react-icons/fa";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -12,74 +7,46 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import GameDetailsAbout from "./GameDetailsAbout";
+import GameDetailsHeader from "./GameDetailsHeader";
 
 const GameDetails = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const isOnPlaystation = data.parent_platforms.some(
+  console.log(data);
+  const isOnPlaystation = data?.parent_platforms?.some(
     (platform) => platform.platform.slug === "playstation"
-  );
-  const isOnPC = data.parent_platforms.some(
+  ) ?? false;
+  const isOnPC = data?.parent_platforms?.some(
     (platform) => platform.platform.slug === "pc"
-  );
-  const isOnXbox = data.parent_platforms.some(
+  ) ?? false;
+  const isOnXbox = data?.parent_platforms?.some(
     (platform) => platform.platform.slug === "xbox"
-  );
-
-  const toggleDescription = () => {
-    setIsExpanded(!isExpanded);
-  };
+  ) ?? false;
 
   return (
-    <div className="flex gap-7">
-      <div className="w-[40%]">
-        <div className="flex gap-2 py-4">
-          {isOnPC && <FaWindows className="text-xl" />}
-          {isOnPlaystation && <FaPlaystation className="text-xl" />}
-          {isOnXbox && <FaXbox className="text-xl" />}
+    <>
+      <GameDetailsHeader
+        isOnPC={isOnPC}
+        isOnPlaystation={isOnPlaystation}
+        isOnXbox={isOnXbox}
+        gameName={data?.name || "Unknown Game"}
+        released={data?.released ?? null}
+        rating={data?.rating ?? null}
+        totalRatings={data?.ratings_count ?? null}
+      />
+      <div className="flex gap-7">
+        <div className="w-[70%]">
+          <video controls autoPlay muted className="w-full rounded-xl">
+            <source
+              src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+          {data?.description && <GameDetailsAbout description={data.description} />}
         </div>
-        <h1 className="font-black text-6xl mb-4">{data.name}</h1>
-        <div>
-          <h3 className="font-bold text-2xl text-red-400">About</h3>
-          <div className={`text-sm ${isExpanded ? "" : "line-clamp-6"}`}>
-            {parse(data.description)}
-          </div>
-          <button
-            onClick={toggleDescription}
-            className="font-bold text-red-400"
-          >
-            {isExpanded ? "See less" : "See more"}
-          </button>
-        </div>
+        <div className="w-[30%]"></div>
       </div>
-      <div className="w-[60%]">
-        <video controls autoPlay muted className="w-full rounded-xl">
-          <source
-            src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <Carousel className="w-full max-w-xs">
-          <CarouselContent>
-            {Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem key={index}>
-                <div className="p-1">
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center">
-                      <span className="text-4xl font-semibold">
-                        {index + 1}
-                      </span>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </div>
-    </div>
+    </>
   );
 };
 
