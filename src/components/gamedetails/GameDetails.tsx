@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import GameDetailsAbout from "./GameDetailsAbout";
 import GameDetailsHeader from "./GameDetailsHeader";
+import GameDetailsMedia from "./GameDetailsMedia";
 
 const GameDetails = () => {
   console.log(data);
@@ -35,13 +36,14 @@ const GameDetails = () => {
       />
       <div className="flex gap-7">
         <div className="w-[70%]">
-          <video controls autoPlay muted className="w-full rounded-xl">
+          {/* <video controls autoPlay muted className="w-full rounded-xl">
             <source
               src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
               type="video/mp4"
             />
             Your browser does not support the video tag.
-          </video>
+          </video> */}
+          <GameDetailsMedia />
           {data?.description && <GameDetailsAbout description={data.description} />}
         </div>
         <div className="w-[30%]"></div>
