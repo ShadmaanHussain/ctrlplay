@@ -1,7 +1,12 @@
 import { throttle } from "lodash";
 import React, { createContext, ReactNode, useEffect, useState } from "react";
 
-export const MediaQueryContext = createContext<boolean | undefined>(undefined);
+interface MediaQueryContextProps {
+  isMobileView: boolean;
+  isTabletView: boolean;
+}
+
+export const MediaQueryContext = createContext<MediaQueryContextProps | undefined>(undefined);
 
 interface MediaQueryProviderProps {
   children: ReactNode;
@@ -13,12 +18,17 @@ const MediaQueryProvider: React.FC<MediaQueryProviderProps> = ({
   threshold,
 }) => {
   const [isMobileView, setIsMobileView] = useState<boolean>(
-    window.innerWidth < threshold
+    window.innerWidth < 640
+  );
+
+  const [isTabletView, setIsTabletView] = useState<boolean>(
+    window.innerWidth < 768
   );
 
   useEffect(() => {
     const handleResize = throttle(() => {
-      setIsMobileView(window.innerWidth < threshold);
+      setIsMobileView(window.innerWidth < 640);
+      setIsTabletView(window.innerWidth < 768);
     }, 200);
     window.addEventListener("resize", handleResize);
 
@@ -28,7 +38,7 @@ const MediaQueryProvider: React.FC<MediaQueryProviderProps> = ({
   }, [threshold]);
 
   return (
-    <MediaQueryContext.Provider value={isMobileView}>
+    <MediaQueryContext.Provider value={{isMobileView, isTabletView}}>
       {children}
     </MediaQueryContext.Provider>
   );

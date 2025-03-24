@@ -22,7 +22,7 @@ interface UserDropdownProps {
 const cleanUrl = (url: string) => url.split("=")[0];
 
 const UserDropdown: React.FC<UserDropdownProps> = ({ user }) => {
-  const isMobileView = useMediaQuery();
+  const { isMobileView } = useMediaQuery();
 
   return (
     <DropdownMenu>

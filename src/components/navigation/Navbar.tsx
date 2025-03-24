@@ -1,11 +1,10 @@
 import { Link } from "react-router";
 import MobileNavigation from "./MobileNavigation";
 import DesktopNavigation from "./DesktopNavigation";
-import { MediaQueryContext } from "@/context/MediaQueryProvider";
-import { useContext } from "react";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 function Navbar() {
-  const isMobileView = useContext(MediaQueryContext);
+  const { isMobileView } = useMediaQuery();
 
   return (
     <div className="py-4 px-8 border-b-gray-100 bg-background w-full">
