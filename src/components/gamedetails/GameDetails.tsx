@@ -9,9 +9,11 @@ import {
 } from "@/components/ui/carousel";
 import GameDetailsAbout from "./GameDetailsAbout";
 import GameDetailsHeader from "./GameDetailsHeader";
-import GameDetailsScreenshots from "./GameDetailsScreenshots";
+import GameDetailsMedia from "./GameDetailsMedia";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 const GameDetails = () => {
+  const { isTabletView } = useMediaQuery();
   console.log(data);
   const isOnPlaystation =
     data?.parent_platforms?.some(
@@ -27,8 +29,8 @@ const GameDetails = () => {
     ) ?? false;
 
   return (
-    <div className="flex gap-7">
-      <div className="w-[60%]">
+    <div className="flex gap-7 flex-col md:flex-row">
+      <div className="w-full md:w-[60%]">
         <GameDetailsHeader
           isOnPC={isOnPC}
           isOnPlaystation={isOnPlaystation}
@@ -38,19 +40,14 @@ const GameDetails = () => {
           rating={data?.rating ?? null}
           totalRatings={data?.ratings_count ?? null}
         />
+        {isTabletView && <GameDetailsMedia />}
         {data?.description && (
           <GameDetailsAbout description={data.description} />
         )}
+        
       </div>
-      <div className="w-[40%]">
-        <video controls autoPlay muted loop className="w-full mb-2">
-          <source
-            src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <GameDetailsScreenshots />
+      <div className="w-full md:w-[40%]">
+        {!isTabletView && <GameDetailsMedia />}
       </div>
     </div>
   );
