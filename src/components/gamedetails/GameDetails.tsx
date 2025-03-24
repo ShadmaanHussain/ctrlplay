@@ -43,7 +43,7 @@ const GameDetails = () => {
         )}
       </div>
       <div className="w-[40%]">
-        <video controls autoPlay muted className="w-full mb-2">
+        <video controls autoPlay muted loop className="w-full mb-2">
           <source
             src="https://steamcdn-a.akamaihd.net/steam/apps/256693661/movie480.mp4"
             type="video/mp4"
