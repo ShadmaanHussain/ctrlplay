@@ -11,6 +11,7 @@ import GameDetailsAbout from "./GameDetailsAbout";
 import GameDetailsHeader from "./GameDetailsHeader";
 import GameDetailsMedia from "./GameDetailsMedia";
 import useMediaQuery from "@/hooks/useMediaQuery";
+import GameDetailsStores from "./GameDetailsStores";
 
 const GameDetails = () => {
   const { isTabletView } = useMediaQuery();
@@ -48,6 +49,7 @@ const GameDetails = () => {
       </div>
       <div className="w-full md:w-[40%]">
         {!isTabletView && <GameDetailsMedia />}
+        {data?.stores && <GameDetailsStores stores={data.stores} />}
       </div>
     </div>
   );

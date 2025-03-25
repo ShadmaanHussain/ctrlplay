@@ -23,3 +23,16 @@ export interface GameScreenshot {
   height: number;
   is_deleted: boolean;
 }
+
+export interface GameStores {
+  id: number;
+  store: {
+    id: number;
+    name: string;
+    slug: string;
+    domain: string;
+    games_count: number;
+    image_background: string;
+  };
+  url: string;
+}
