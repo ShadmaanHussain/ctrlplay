@@ -1,12 +1,4 @@
-import React, { useState } from "react";
 import data from "./data.json";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import GameDetailsAbout from "./GameDetailsAbout";
 import GameDetailsHeader from "./GameDetailsHeader";
 import GameDetailsMedia from "./GameDetailsMedia";
