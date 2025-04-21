@@ -11,7 +11,7 @@ const GameDetailsAbout: React.FC<GameDetailsAboutProps> = ({ description }) => {
     setIsExpanded(!isExpanded);
   };
   return (
-    <div>
+    <div className="mb-8">
       <h3 className="font-bold text-2xl text-red-400">About</h3>
       <div className={`text-sm ${isExpanded ? "" : "line-clamp-6"}`}>
         {parse(description)}
