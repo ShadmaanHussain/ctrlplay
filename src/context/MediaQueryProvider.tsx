@@ -20,7 +20,6 @@ const MediaQueryProvider: React.FC<MediaQueryProviderProps> = ({
   const [isMobileView, setIsMobileView] = useState<boolean>(
     window.innerWidth < 640
   );
-
   const [isTabletView, setIsTabletView] = useState<boolean>(
     window.innerWidth < 768
   );
