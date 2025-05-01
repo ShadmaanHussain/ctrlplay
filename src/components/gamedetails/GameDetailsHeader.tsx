@@ -6,24 +6,28 @@ import ReleaseDate from "../ReleaseDate";
 import { FaStar } from "react-icons/fa";
 
 interface GameDetailsHeaderProps {
-  isOnPC: boolean;
-  isOnPlaystation: boolean;
-  isOnXbox: boolean;
-  gameName: string;
-  released: string | null;
-  rating: number | null;
-  totalRatings: number | null;
+  data: {
+    isOnPC: boolean;
+    isOnPlaystation: boolean;
+    isOnXbox: boolean;
+    gameName: string;
+    released: string | null;
+    rating: number | null;
+    totalRatings: number | null;
+  };
 }
 
-const GameDetailsHeader: React.FC<GameDetailsHeaderProps> = ({
-  isOnPC,
-  isOnPlaystation,
-  isOnXbox,
-  gameName,
-  released,
-  rating,
-  totalRatings,
-}) => {
+const GameDetailsHeader: React.FC<GameDetailsHeaderProps> = ({ data }) => {
+  const {
+    isOnPC,
+    isOnPlaystation,
+    isOnXbox,
+    gameName,
+    released,
+    rating,
+    totalRatings,
+  } = data;
+  
   return (
     <div className="mb-10">
       <div className="flex gap-3 py-4 items-center">

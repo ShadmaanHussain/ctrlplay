@@ -8,6 +8,17 @@ export interface Game {
   metacritic: number;
 }
 
+
+export interface GameDetails {
+  name: string;
+  released: string | null;
+  rating: number | null;
+  ratings_count: number | null;
+  description: string | null;
+  parent_platforms?: ParentPlatform[] | null;
+  stores?: GameStores[] | null;
+}
+
 export interface GameGenre {
   games_count: number;
   id: number;
@@ -35,4 +46,12 @@ export interface GameStores {
     image_background: string;
   };
   url: string;
+}
+
+export interface ParentPlatform {
+  platform: {
+    id: number;
+    name: string;
+    slug: string;
+  };
 }

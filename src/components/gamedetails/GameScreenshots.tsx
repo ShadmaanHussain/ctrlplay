@@ -17,6 +17,7 @@ interface GameScreenshotsProps {
 const GameScreenshots: React.FC<GameScreenshotsProps> = ({ screenshots }) => {
   const [startIndex, setStartIndex] = useState(0);
   const slicedData = screenshots.slice(0, 3);
+  
   return (
     <Dialog>
       <div className="flex md:grid md:grid-cols-2 gap-2">
