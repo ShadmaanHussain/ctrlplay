@@ -1,23 +1,19 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Game, GameGenre } from "@/types/GameTypes";
+import { Game } from "@/types/GameTypes";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Link } from "react-router";
 import MetacriticScore from "../MetacriticScore";
+import { getCommaSeparatedString } from "@/lib/GameUtils";
 
 interface GameCardProps {
   game: Game;
 }
 
-const getGenreString = (genres: GameGenre[]) => {
-  return genres.map(
-    (genre) =>
-      `${genre.name}${genres.indexOf(genre) !== genres.length - 1 ? ", " : ""}`
-  );
-};
-
 const GameCard: React.FC<GameCardProps> = ({ game }) => {
+  const gameGenres = game.genres.map((genre) => genre.name);
+
   return (
     <Card className="relative bg-muted group">
       <Button
@@ -47,7 +43,7 @@ const GameCard: React.FC<GameCardProps> = ({ game }) => {
       <CardContent className="flex justify-between items-center px-4 pb-4 pt-1 w-full">
         <div className="flex-1 overflow-hidden">
           <p className="text-sm text-gray-500 whitespace-nowrap overflow-hidden text-ellipsis max-w-full">
-            {getGenreString(game.genres)}
+            {getCommaSeparatedString(gameGenres)}
           </p>
         </div>
         {game.metacritic && (

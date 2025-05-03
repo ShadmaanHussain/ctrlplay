@@ -5,11 +5,7 @@ import GameDetailsMedia from "./GameDetailsMedia";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import GameDetailsStores from "./GameDetailsStores";
 import GameDetailsInfo from "./GameDetailsInfo";
-import { GameParentPlatform } from "@/types/GameTypes";
-
-const isOnPlatform = (platforms: GameParentPlatform[], slug: string) => {
-  return platforms?.some((platform) => platform.platform.slug === slug) ?? false;
-}
+import { isOnPlatform } from "@/lib/GameUtils";
 
 const GameDetails = () => {
   const { isTabletView } = useMediaQuery();
@@ -25,6 +21,15 @@ const GameDetails = () => {
     totalRatings: data?.ratings_count ?? null,
   }
 
+  const gameInfoData = {
+    platforms: data?.platforms,
+    genres: data?.genres,
+    releaseDate: data?.released,
+    developers: data?.developers,
+    publishers: data?.publishers,
+    website: data?.website,
+  }
+
   return (
     <div className="flex gap-7 flex-col md:flex-row">
       <div className="w-full md:w-[60%]">
@@ -35,7 +40,7 @@ const GameDetails = () => {
         {data?.description && (
           <GameDetailsAbout description={data.description} />
         )}
-        <GameDetailsInfo />
+        <GameDetailsInfo data={gameInfoData} />
       </div>
       <div className="w-full md:w-[40%]">
         {!isTabletView && <GameDetailsMedia />}
