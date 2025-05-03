@@ -5,9 +5,9 @@ import GameDetailsMedia from "./GameDetailsMedia";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import GameDetailsStores from "./GameDetailsStores";
 import GameDetailsInfo from "./GameDetailsInfo";
-import { ParentPlatform } from "@/types/GameTypes";
+import { GameParentPlatform } from "@/types/GameTypes";
 
-const isOnPlatform = (platforms: ParentPlatform[], slug: string) => {
+const isOnPlatform = (platforms: GameParentPlatform[], slug: string) => {
   return platforms?.some((platform) => platform.platform.slug === slug) ?? false;
 }
 

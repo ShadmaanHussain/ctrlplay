@@ -2,7 +2,7 @@ import React from "react";
 import { FaWindows } from "react-icons/fa";
 import { FaPlaystation } from "react-icons/fa";
 import { FaXbox } from "react-icons/fa";
-import ReleaseDate from "../ReleaseDate";
+import { ReleaseDate } from "../ReleaseDate";
 import { FaStar } from "react-icons/fa";
 
 interface GameDetailsHeaderProps {
