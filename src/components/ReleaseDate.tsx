@@ -1,13 +1,9 @@
 import React from 'react'
+import { formatDate } from '@/lib/GameUtils';
 
 interface ReleasedContainerProps {
   released: string | null;
 }
-
-export const formatDate = (dateString: string) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-};
 
 export const ReleaseDate: React.FC<ReleasedContainerProps> = ({ released }) => {
   return (
