@@ -28,6 +28,7 @@ const GameDetails = () => {
     developers: data?.developers,
     publishers: data?.publishers,
     website: data?.website,
+    tags: data?.tags
   }
 
   return (
