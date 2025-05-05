@@ -5,11 +5,38 @@ import GameDetailsMedia from "./GameDetailsMedia";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import GameDetailsStores from "./GameDetailsStores";
 import GameDetailsInfo from "./GameDetailsInfo";
-import { transformGameData } from "@/lib/GameUtils";
+import { isOnPlatform } from "@/lib/GameUtils";
 import { GameDetails as GameInterface } from "@/types/GameTypes";
 
 interface GameDetailsProps {
   data: GameInterface;
+}
+
+const transformGameData = (data: GameInterface) => {
+  const gameHeaderData = {
+    isOnPC: isOnPlatform(data?.parent_platforms ?? [], "pc"),
+    isOnPlaystation: isOnPlatform(data?.parent_platforms ?? [], "playstation"),
+    isOnXbox: isOnPlatform(data?.parent_platforms ?? [], "xbox"),
+    gameName: data?.name || "Unknown Game",
+    released: data?.released || null,
+    rating: data?.rating || null,
+    totalRatings: data?.ratings_count || null,
+  };
+
+  const gameInfoData = {
+    platforms: data?.platforms ?? [],
+    genres: data?.genres ?? [],
+    releaseDate: data?.released,
+    developers: data?.developers ?? [],
+    publishers: data?.publishers ?? [],
+    website: data?.website,
+    tags: data?.tags ?? [],
+  }
+
+  return {
+    gameHeaderData,
+    gameInfoData,
+  };
 }
 
 const GameDetails: React.FC<GameDetailsProps> = ({ data }) => {

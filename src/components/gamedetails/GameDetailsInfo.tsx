@@ -8,16 +8,18 @@ import {
 } from "@/types/GameTypes";
 import React, { ReactNode } from "react";
 
+interface GameDetailsInfo {
+  platforms: GamePlatform[];
+  genres: GameGenre[];
+  releaseDate: string | null;
+  developers: GameDeveloper[];
+  publishers: GamePublisher[];
+  website: string | null;
+  tags: GameTag[];
+}
+
 interface GameDetailsInfoProps {
-  data: {
-    platforms: GamePlatform[];
-    genres: GameGenre[];
-    releaseDate: string | null;
-    developers: GameDeveloper[];
-    publishers: GamePublisher[];
-    website: string | null;
-    tags: GameTag[];
-  };
+  data: GameDetailsInfo;
 }
 
 interface GameDetailsGridItemProps {
@@ -27,7 +29,7 @@ interface GameDetailsGridItemProps {
   isFullWidth?: boolean;
 }
 
-const GameDetailsInfo: React.FC<GameDetailsInfoProps> = ({ data }) => {
+const getFieldsToRenderConfig = (data: GameDetailsInfo) => {
   const {
     platforms,
     genres,
@@ -38,61 +40,70 @@ const GameDetailsInfo: React.FC<GameDetailsInfoProps> = ({ data }) => {
     tags,
   } = data;
 
+  return [
+    {
+      label: "Platforms",
+      data: platforms.length
+        ? getCommaSeparatedString(platforms.map((p) => p.platform.name))
+        : null,
+    },
+    {
+      label: "Genre",
+      data: genres.length
+        ? getCommaSeparatedString(genres.map((g) => g.name))
+        : null,
+    },
+    {
+      label: "Release Date",
+      data: releaseDate ? formatDate(releaseDate) : null,
+    },
+    {
+      label: "Developers",
+      data: developers.length
+        ? getCommaSeparatedString(developers.map((d) => d.name))
+        : null,
+    },
+    {
+      label: "Publishers",
+      data: publishers.length
+        ? getCommaSeparatedString(publishers.map((p) => p.name))
+        : null,
+    },
+    {
+      label: "Website",
+      data: website ? (
+        <a href={website} target="_blank" rel="noopener noreferrer">
+          {website}
+        </a>
+      ) : null,
+      isSingleLineGridData: true,
+    },
+    {
+      label: "Tags",
+      data: tags.length
+        ? getCommaSeparatedString(tags.map((t) => t.name))
+        : null,
+      isFullWidth: true,
+    },
+  ];
+};
+
+const GameDetailsInfo: React.FC<GameDetailsInfoProps> = ({ data }) => {
+  const fieldsToRender = getFieldsToRenderConfig(data);
+
   return (
     <div className="grid grid-cols-2 gap-4 mb-4">
-      {platforms.length > 0 && (
-        <GameDetailsInfoItem
-          gridName="Platforms"
-          gridData={getCommaSeparatedString(
-            platforms.map((platform) => platform.platform.name)
-          )}
-        />
-      )}
-      {genres.length > 0 && (
-        <GameDetailsInfoItem
-          gridName="Genre"
-          gridData={getCommaSeparatedString(genres.map((genre) => genre.name))}
-        />
-      )}
-      {releaseDate && (
-        <GameDetailsInfoItem
-          gridName="Release Date"
-          gridData={formatDate(releaseDate)}
-        />
-      )}
-      {developers.length > 0 && (
-        <GameDetailsInfoItem
-          gridName="Developers"
-          gridData={getCommaSeparatedString(
-            developers.map((devs) => devs.name)
-          )}
-        />
-      )}
-      {publishers.length > 0 && (
-        <GameDetailsInfoItem
-          gridName="Publishers"
-          gridData={getCommaSeparatedString(
-            publishers.map((publisher) => publisher.name)
-          )}
-        />
-      )}
-      {website && (
-        <GameDetailsInfoItem
-          gridName="Website"
-          gridData={
-            <a href={website} target="_blank" rel="noopener noreferrer">
-              {website}
-            </a>
-          }
-          isSingleLineGridData={true}
-        />
-      )}
-      {tags.length > 0 && (
-        <GameDetailsInfoItem
-          gridName="Tags"
-          gridData={getCommaSeparatedString(tags.map((tag) => tag.name))}
-          isFullWidth={true}
-        />
+      {fieldsToRender.map(
+        ({ label, data, isSingleLineGridData, isFullWidth }) =>
+          data && (
+            <GameDetailsInfoItem
+              key={label}
+              gridName={label}
+              gridData={data}
+              isSingleLineGridData={isSingleLineGridData}
+              isFullWidth={isFullWidth}
+            />
+          )
       )}
     </div>
   );
