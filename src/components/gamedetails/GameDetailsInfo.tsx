@@ -2,7 +2,7 @@ import { formatDate, getCommaSeparatedString } from "@/lib/GameUtils";
 import {
   GameDeveloper,
   GameGenre,
-  GamePlatformDetails,
+  GamePlatform,
   GamePublisher,
   GameTag,
 } from "@/types/GameTypes";
@@ -10,7 +10,7 @@ import React, { ReactNode } from "react";
 
 interface GameDetailsInfoProps {
   data: {
-    platforms: GamePlatformDetails[];
+    platforms: GamePlatform[];
     genres: GameGenre[];
     releaseDate: string | null;
     developers: GameDeveloper[];

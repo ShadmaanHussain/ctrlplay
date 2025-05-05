@@ -15,8 +15,14 @@ export interface GameDetails {
   rating: number | null;
   ratings_count: number | null;
   description: string | null;
-  parent_platforms?: GameParentPlatform[] | null;
-  stores?: GameStores[] | null;
+  parent_platforms: GameParentPlatform[] | null;
+  platforms: GamePlatform[] | null;
+  stores: GameStores[] | null;
+  genres: GameGenre[] | null;
+  developers: GameDeveloper[] | null;
+  website: string | null;
+  tags: GameTag[] | null;
+  publishers: GamePublisher[] | null;
 }
 
 export interface GameGenre {
@@ -56,7 +62,7 @@ export interface GameParentPlatform {
   };
 }
 
-export interface GamePlatformDetails {
+export interface GamePlatform {
   platform: Platform;
   released_at: string;
   requirements: {

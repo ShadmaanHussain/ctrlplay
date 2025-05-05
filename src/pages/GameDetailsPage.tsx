@@ -5,16 +5,16 @@ import { fetchGameDetails } from '@/lib/RawgUtils';
 import GameDetails from '@/components/gamedetails/GameDetails';
 
 const GameDetailsPage = () => {
-    // const { slug } = useParams();
-    // const { data, error, isLoading } = useQuery({
-    //     queryKey: ["gamedetail", slug],
-    //     queryFn: () => fetchGameDetails(slug),
-    //   });
-    // if(!error && !isLoading) console.log(JSON.stringify(data));
+    const { slug } = useParams();
+    const { data, error, isLoading } = useQuery({
+        queryKey: ["gamedetail", slug],
+        queryFn: () => fetchGameDetails(slug),
+      });
+    if(!error && !isLoading) console.log(data);
     
   return (
     <PageContainer className='mt-6 mb-6'>
-        <GameDetails />
+        <GameDetails data={data} />
     </PageContainer>
   )
 }
